@@ -1,0 +1,48 @@
+﻿@model ICollection<FINALPROJECT.Domain.Models.ResponseModel.PaymentResponseModel>
+@{
+    Layout = "CustomerLayout";
+}
+
+@{
+    ViewData["Title"] = "Payments";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Your Payments</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            You have no payments made.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Auction ID</th>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Reference ID</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var payment in Model)
+                {
+                    <tr>
+                        <td>@payment.Amount</td>
+                        <td>@payment.AuctionId</td>
+                        <td>@payment.CustomerId</td>
+                        <td>@payment.Date.ToString("MM/dd/yyyy HH:mm")</td>
+                        <td>@payment.ReferenceID</td>
+                        <td>@payment.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+

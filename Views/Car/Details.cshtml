@@ -1,0 +1,76 @@
+﻿@model FINALPROJECT.Domain.Models.ResponseModel.CarResponseModel
+@{
+    Layout = "_Layout";
+}
+
+<h2>Car Details</h2>
+
+<div class="car-item-details">
+    <div class="car-image">
+        <img src="@Url.Content($"~/Uploads/{Model.ImageUrl}")" alt="@Model.Name @Model.Model" style="width:100%; max-width:400px;" />
+    </div>
+    <div class="car-details">
+        <h3>@Model.Name @Model.Model</h3>
+        <dl class="row">
+            <dt class="col-sm-3">
+                Brand
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Brand
+            </dd>
+            <dt class="col-sm-3">
+                Model
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Model
+            </dd>
+            <dt class="col-sm-3">
+                Color
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Color
+            </dd>
+            <dt class="col-sm-3">
+                Status
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Status
+            </dd>
+        </dl>
+        <div class="car-actions">
+            <a asp-action="Edit" asp-controller="Car" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a> |
+            <a asp-action="Index" asp-controller="Car" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .car-item-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .car-image {
+        flex: 1 1 40%;
+        text-align: center;
+    }
+
+    .car-details {
+        flex: 1 1 50%;
+    }
+
+        .car-details h3 {
+            margin-bottom: 15px;
+        }
+
+    .car-actions {
+        margin-top: 20px;
+    }
+
+        .car-actions .btn {
+            margin-right: 10px;
+        }
+</style>

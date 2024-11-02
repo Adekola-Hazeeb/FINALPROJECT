@@ -1,0 +1,37 @@
+﻿@model FINALPROJECT.Domain.Models.ResponseModel.AddressResponseModel
+
+@{
+    ViewData["Title"] = "Address Details";
+    Layout = "CustomerLayout";
+}
+
+<h1>Address Details</h1>
+
+<div>
+    <h4>Address</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Number
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Number
+        </dd>
+        <dt class="col-sm-2">
+            Street
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Street
+        </dd>
+        <dt class="col-sm-2">
+            City
+        </dt>
+        <dd class="col-sm-10">
+            @Model.City
+        </dd>
+        <dt class="col-sm-2">
+            State
+        </dt>
+        <dd class="col-sm-10">
+            @Model.State
+

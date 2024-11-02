@@ -1,0 +1,33 @@
+﻿@model ICollection<FINALPROJECT.Domain.Models.ResponseModel.BidResponseModel>
+
+@{
+    ViewData["Title"] = "Bids";
+    Layout = "_Layout";
+}
+
+<h2>Bids</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Amount</th>
+            <th>Auction ID</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bid in Model)
+        {
+            <tr>
+                <td>@bid.CustomerName</td>
+                <td>@bid.Amount</td>
+                <td>@bid.AuctionId</td>
+                <td>
+                    <a href="@Url.Action("Details", "Bid", new { id = bid.AuctionId })" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<FINALPROJECT.Domain.Models.ResponseModel.AuctionResponseModel>
+@{
+    Layout = "CustomerLayout";
+}
+
+<h2>Customer Auctions</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Auction Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Highest Bid</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var auction in Model)
+        {
+            <tr>
+                <td>@auction.Name</td>
+                <td>@auction.AuctionStartDate.ToShortDateString()</td>
+                <td>@auction.AuctionEndDate.ToShortDateString()</td>
+                <td>@auction.CurrentPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

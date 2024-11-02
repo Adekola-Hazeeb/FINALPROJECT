@@ -1,0 +1,31 @@
+﻿@model FINALPROJECT.Domain.Models.ResponseModel.AuctionResponseModel
+
+@{
+    ViewData["Title"] = "Delete Auction";
+    Layout = "_Layout";
+}
+
+<h2>Delete Auction</h2>
+
+<h3>Are you sure you want to delete this auction?</h3>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Starting Price</dt>
+        <dd class="col-sm-10">@Model.StartingPrice</dd>
+
+        <dt class="col-sm-2">Current Price</dt>
+        <dd class="col-sm-10">@Model.CurrentPrice</dd>
+
+        <dt class="col-sm-2">Auction End Date</dt>
+        <dd class="col-sm-10">@Model.AuctionEndDate</dd>
+    </dl>
+
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="@Url.Action("Index", "Auction")" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

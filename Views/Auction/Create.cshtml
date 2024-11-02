@@ -1,0 +1,70 @@
+﻿@model FINALPROJECT.Domain.Models.RequestModel.AuctionRequestModel
+@{
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title Auction</h2>
+
+<form asp-action="Create" asp-controller="Auction" method="post">
+    <div class="form-group">
+        <label asp-for="CarId" class="control-label"></label>
+        <input  asp-for="CarId" class="form-control" name="carId" hidden />
+        <span asp-validation-for="CarId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AuctionEndDate" class="control-label"></label>
+        <input asp-for="AuctionEndDate" class="form-control" type="datetime-local" />
+        <span asp-validation-for="AuctionEndDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StartingPrice" class="control-label"></label>
+        <input asp-for="StartingPrice" class="form-control" />
+        <span asp-validation-for="StartingPrice" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="@Url.Action("Index", "Auction")" class="btn btn-secondary">Cancel</a>
+</form>
+<style>
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .control-label {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+    }
+
+        .form-control:focus {
+            border-color: #80bdff;
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+    .text-danger {
+        color: #dc3545;
+        margin-top: 0.25rem;
+        display: block;
+        font-size: 0.875rem;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = String(today.getMonth() + 1).padStart(2, '0');
+        var day = String(today.getDate()).padStart(2, '0');
+        var formattedDate = `${year}-${month}-${day}`;
+
+        document.getElementById('AuctionEndDate').value = formattedDate;
+    });
+</script>

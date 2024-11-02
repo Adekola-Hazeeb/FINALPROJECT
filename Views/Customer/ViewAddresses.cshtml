@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FINALPROJECT.Domain.Models.ResponseModel.AddressResponseModel>
+@{
+    Layout = "CustomerLayout";
+}
+
+<h2>Customer Addresses</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var address in Model)
+        {
+            <tr>
+                <td>@address.Number</td>
+                <td>@address.Street</td>
+                <td>@address.City</td>
+                <td>@address.State</td>
+                <td>@address.PostalCode</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

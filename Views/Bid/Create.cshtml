@@ -1,0 +1,24 @@
+﻿@model FINALPROJECT.Domain.Models.RequestModel.BidRequestModel
+
+@{
+    ViewBag.Title = "Place a Bid";
+    Layout = "CustomerLayout";
+}
+
+<h2>Place a Bid</h2>
+
+<form asp-action="Create" asp-controller="Bid" method="post">
+    <div class="container d-flex justify-content-center align-items-center" >
+        <label asp-for="AuctionId" class="control-label"></label>
+        <input asp-for="AuctionId" class="form-control" name="auctionId" hidden />
+        <span asp-validation-for="AuctionId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Amount" class="control-label"></label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="@Url.Action("GetAll", "Auction")" class="btn btn-secondary">Cancel</a>
+</form>
+

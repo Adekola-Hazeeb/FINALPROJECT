@@ -1,0 +1,45 @@
+﻿@model ICollection<FINALPROJECT.Domain.Models.ResponseModel.AuctionResponseModel>
+@{
+    Layout = "CustomerLayout";
+}
+
+<h2>Outstanding Payments</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No outstanding payments available.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Current Price</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var auction in Model)
+            {
+                <tr>
+                    <td>@auction.Id</td>
+                    <td>@auction.Name</td>
+                    <td>@auction.Description</td>
+                    <td>@auction.CurrentPrice</td>
+                    <td>@auction.AuctionStartDate.ToString("g")</td>
+                    <td>@auction.AuctionEndDate.ToString("g")</td>
+                    <td class="Payment-actions">
+                        <a href="@Url.Action("MakePayment", "Payment", new { auctionId = auction.Id })" class="btn btn-info">Make Payment</a>
+                        <a href="@Url.Action("CancelOutstanding", "Customer", new { auctionId = auction.Id })" class="btn btn-info">Cancel Payment</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<a asp-action="Index">Back to List</a>

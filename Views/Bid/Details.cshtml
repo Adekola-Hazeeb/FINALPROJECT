@@ -1,0 +1,26 @@
+﻿@model FINALPROJECT.Domain.Models.ResponseModel.BidResponseModel
+
+@{
+    ViewData["Title"] = "Bid Details";
+    Layout = "_Layout";
+}
+
+<h2>Bid Details</h2>
+
+<div>
+    <h4>Bid</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Customer Name</dt>
+        <dd class="col-sm-10">@Model.CustomerName</dd>
+
+        <dt class="col-sm-2">Amount</dt>
+        <dd class="col-sm-10">@Model.Amount</dd>
+
+        <dt class="col-sm-2">Auction ID</dt>
+        <dd class="col-sm-10">@Model.AuctionId</dd>
+    </dl>
+</div>
+
+<a href="@Url.Action("Index", "Bid")" class="btn btn-secondary">Back to Bids</a>
+

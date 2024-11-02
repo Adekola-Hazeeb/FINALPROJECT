@@ -1,0 +1,36 @@
+﻿@model ICollection<FINALPROJECT.Domain.Models.ResponseModel.AuctionResponseModel>
+
+@{
+    ViewData["Title"] = "Auctions";
+    Layout = "CustomerLayout";
+}
+
+<h2>Auctions</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Starting Price</th>
+            <th>Current Price</th>
+            <th>Auction End Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var auction in Model)
+        {
+            <tr>
+                <td>@auction.Name</td>
+                <td>@auction.StartingPrice</td>
+                <td>@auction.CurrentPrice</td>
+                <td>@auction.AuctionEndDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <a href="@Url.Action("Details", "Auction", new { id = auction.Id })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Create", "Bid", new { id = auction.Id })" class="btn btn-warning">Bid</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

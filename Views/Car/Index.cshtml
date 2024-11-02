@@ -1,0 +1,96 @@
+﻿@model ICollection<FINALPROJECT.Domain.Models.ResponseModel.CarResponseModel>
+@{
+    Layout = "_Layout";
+}
+
+<h2>Car List</h2>
+
+<p>
+    <a asp-action="Create" asp-controller="Car">Create a New Car</a>
+</p>
+<div class="car-grid">
+    @foreach (var car in Model)
+    {
+        <div class="car-item">
+            <div class="car-image">
+                <img src="@Url.Content($"~/Uploads/{car.ImageUrl}")" alt="@car.Name">
+            </div>
+            <div class="car-details">
+                <h3>@car.Name @car.Model</h3>
+                <p><strong>Brand:</strong> @car.Id</p>
+                <p><strong>Brand:</strong> @car.Brand</p>
+                <p><strong>Color:</strong> @car.Color</p>
+                <p><strong>Chassis Number:</strong> @car.ChasisNumber</p>
+                <p><strong>Status:</strong> @car.Status</p>
+                <div class="car-actions">
+                    <a asp-action="Details" asp-controller="Car" asp-route-id="@car.Id">Details</a> |
+                    <a asp-action="Edit" asp-controller="Car" asp-route-id="@car.Id">Edit</a> |
+                    <a asp-action="Delete" asp-controller="Car" asp-route-id="@car.Id">Delete</a>
+                    <a href="@Url.Action("Create", "Auction", new { CarId = @car.Id })">Auction</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<style>
+    .car-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .car-item {
+        border: 1px solid #ccc;
+        padding: 15px;
+        width: 300px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+    }
+
+    .car-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .car-details {
+        margin-top: 10px;
+    }
+
+    .car-actions {
+        margin-top: 15px;
+    }
+
+        .car-actions .btn {
+            margin-right: 5px;
+        }
+</style>
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Name</td>
+                <td>@car.Brand</td>
+                <td>@car.Model</td>
+                <td>@car.Color</td>
+                <td>@car.Status</td>
+                <td>
+                    <a asp-action="Details" asp-controller = "Car" asp-route-id="@car.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@car.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@car.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> *@
